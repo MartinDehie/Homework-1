@@ -18,6 +18,8 @@ int main() {
     auto endTime = chrono::high_resolution_clock::now();
     auto elapsedTime = chrono::duration_cast<chrono::nanoseconds>(
     endTime - startTime);
-    cout << "A la funcion le tomó: " << elapsedTime.count() << "nanosegundos en ejecutar" << endl;
+    cout << "sonIguales() demoró: " << elapsedTime.count() << "nanosegundos en ejecutar" << endl;
     return 0;
 }
+/* La versión constexpr es más rápida a la versión normal porque permite que la funcion se ejecute en tiempo de compilación y
+la medición ocurre en el tiempo de ejecución. Es decir, que la función con constexpr permite una ejecución más eficiente */

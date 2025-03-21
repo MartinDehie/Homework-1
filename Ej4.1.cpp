@@ -19,6 +19,6 @@ int main() {
     auto endTime = chrono::high_resolution_clock::now();
     auto elapsedTime = chrono::duration_cast<chrono::nanoseconds>(
     endTime - startTime);
-    cout << "A sonIguales le tomó: " << elapsedTime.count() << "nanosegundos" << endl;
+    cout << "sonIguales() demoró : " << elapsedTime.count() << "nanosegundos en ejecutar" << endl;
     return 0;
 }

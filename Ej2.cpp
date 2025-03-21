@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <algorithm>
 using namespace std;
 
 //A
@@ -50,9 +49,7 @@ void logMessage(string Mensaje_De_Acceso, string Nombre_de_Usuario){
     outFile.close();
 }   
 int main(){
-    try {
-        cout << "Simulando ejecución del programa..." << endl;
-        
+    try {        
         logMessage("Inicio del programa", 1);
         
         logMessage("Depuración en curso", 2);

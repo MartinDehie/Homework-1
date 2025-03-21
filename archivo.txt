@@ -1,9 +1,0 @@
-[INFO] Inicio del programa
-[DEBUG] Depuración en curso
-[WARNING] Posible problema detectado
-[ERROR] Error en módulo X
-[CRITICAL] Error en módulo X
-[UNKNOWN] Error en módulo X
-[CRITICAL] Fallo crítico del sistema
-[UNKNOWN] Fallo crítico del sistema
-[SECURITY]Inicio de sesión exitoso

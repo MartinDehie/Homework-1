@@ -48,24 +48,28 @@ void logMessage(string Mensaje_De_Acceso, string Nombre_de_Usuario){
     outFile << "[SECURITY]"<< Mensaje_De_Acceso <<endl;
     outFile.close();
 }   
-int main(){
-    try {        
-        logMessage("Inicio del programa", 1);
-        
-        logMessage("Depuración en curso", 2);
-        
-        logMessage("Posible problema detectado", 3);
-        
-        logMessage("Error en módulo X", 4);
-        
-        logMessage("Fallo crítico del sistema", 5);
-        
-        logMessage("Access Granted", "user123");
-        
-        throw runtime_error("Acceso a memoria inválido");
-    }
-    catch (const exception& e) {
-        
+int main(){      
+    logMessage("Inicio del programa", 1);
+    
+    logMessage("Depuración en curso", 2);
+    
+    logMessage("Posible problema detectado", 3);
+    
+    logMessage("Error en módulo X", 4);
+    
+    logMessage("Fallo crítico del sistema", 5);
+    
+    logMessage("División por cero detectada", __FILE__, __LINE__);
+
+    logMessage("Access Granted", "admin");
+    logMessage("Access Denied", "guest");
+
+    try {
+        throw runtime_error("Error inesperado");
+    } catch (const exception& e) {
+        logMessage(e.what(), __FILE__, __LINE__);
+        cerr << "Error crítico, ejecución detenida" << endl;
+        return 1;
     }
     return 0;
 }

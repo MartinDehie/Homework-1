@@ -3,10 +3,14 @@
 
 using namespace std;
 
+// Función recursiva para comparar dos cadenas de caracteres
+
 constexpr bool sonIguales(const char* a, const char* b) {
-    return (*a == '\0' && *b == '\0') ? true :
-           (*a != *b) ? false :
-           sonIguales(a + 1, b + 1);
+    if (*a == '\0' && *b == '\0')  // Si ambos punteros llegan al final de la cadena, son iguales.
+        return true;
+    if (*a != *b)// Si los caracteres en la misma posición son distintos, las cadenas no son iguales. 
+        return false;
+    return sonIguales(a + 1, b + 1);// Llamada recursiva para comparar el siguiente carácter.
 }
 
 int main() {

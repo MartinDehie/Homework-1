@@ -4,7 +4,7 @@ Este proyecto permite crear una matriz cuadrada de tamaño n x n donde los eleme
 ### Funciones:
 
 *crearMatrizCuadrada(n):*
-Crea una matriz cuadrada dinámica de tamaño n x n y llena sus elementos con los valores generados por la fórmula n*i + (j+1).
+Crea una matriz cuadrada dinámica de tamaño n x n y llena sus elementos con los valores desde 1 a n^2.
 
 *imprimirMatriz(matriz, n):*
 Imprime los elementos de la matriz en formato de coordenadas, comenzando desde el último elemento (en orden descendente).

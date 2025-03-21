@@ -12,7 +12,7 @@ bool sonIguales(char *a, char *b) {
 
 int main() {
     char *texto1 = "alksdnlaksdnaksjnasldknaosdbakjsdbalkdnalsdalksdnalkdnalksdnalskd";
-    char *texto2 = "asdasasdfnkjjwdflwenlkfqowpecnqwpjocnqwjcnwkdcnlkNDCLKASLd";
+    char *texto2 = "alksdnlaksdnaksjnasldknaosdbakjsdbalkdnalsdalksdnalkdnalksdnalskd";
 
     auto startTime = chrono::high_resolution_clock::now();
     sonIguales(texto1,texto2);

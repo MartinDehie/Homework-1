@@ -4,39 +4,39 @@ using namespace std;
 
 struct node {
     int valor;
-    unique_ptr<node> siguiente;
+    shared_ptr<node> siguiente;
     node(int val) : valor(val), siguiente(nullptr) {}
 };
 
 struct ListaEnlazada {
-    unique_ptr<node> cabeza;
+    shared_ptr<node> cabeza;
     int size;
     ListaEnlazada() : cabeza(nullptr), size(0) {}
 };
 
-void push_front(unique_ptr<ListaEnlazada>& lista, int val) {
-    unique_ptr<node> nuevo = make_unique<node>(val);
+void push_front(shared_ptr<ListaEnlazada>& lista, int val) {
+    shared_ptr<node> nuevo = make_shared<node>(val);
     nuevo->siguiente = move(lista->cabeza);
     lista->cabeza = move(nuevo);
     lista->size++;
 }
 
-void push_back(unique_ptr<ListaEnlazada>& lista, int val) {
-    unique_ptr<node> nuevo = make_unique<node>(val);
+void push_back(shared_ptr<ListaEnlazada>& lista, int val) {
+    shared_ptr<node> nuevo = make_shared<node>(val);
     if (!lista->cabeza) {
         lista->cabeza = move(nuevo);
         lista->size++;
         return;
     }
-    node* temp = lista->cabeza.get();
+    shared_ptr<node> temp = lista->cabeza;
     while (temp->siguiente) {
-        temp = temp->siguiente.get();
+        temp = temp->siguiente;
     }
     temp->siguiente = move(nuevo);
     lista->size++;
 }
 
-void insert(unique_ptr<ListaEnlazada>& lista, int posicion, int val) {
+void insert(shared_ptr<ListaEnlazada>& lista, int posicion, int val) {
     if (posicion <= 0) {
         push_front(lista, val);
         return;
@@ -46,26 +46,26 @@ void insert(unique_ptr<ListaEnlazada>& lista, int posicion, int val) {
         push_back(lista, val);
         return;
     }
-    unique_ptr<node> nuevo = make_unique<node>(val);
-    node* actual = lista->cabeza.get();
+    shared_ptr<node> nuevo = make_shared<node>(val);
+    shared_ptr<node> actual = lista->cabeza;
     for (int i = 0; i < posicion - 1 && actual->siguiente; i++) {
-        actual = actual->siguiente.get();
+        actual = actual->siguiente;
     }
     nuevo->siguiente = move(actual->siguiente);
     actual->siguiente = move(nuevo);
     lista->size++;
 }
 
-void erase(unique_ptr<ListaEnlazada>& lista, int posicion) {
+void erase(shared_ptr<ListaEnlazada>& lista, int posicion) {
     if (!lista->cabeza || posicion < 0) return;
     if (posicion == 0) {
         lista->cabeza = move(lista->cabeza->siguiente);
         lista->size--;
         return;
     }
-    node* actual = lista->cabeza.get();
+    shared_ptr<node> actual = lista->cabeza;
     for (int i = 0; i < posicion - 1 && actual->siguiente; i++) {
-        actual = actual->siguiente.get();
+        actual = actual->siguiente;
     }
     if (actual->siguiente) {
         actual->siguiente = move(actual->siguiente->siguiente);
@@ -73,11 +73,11 @@ void erase(unique_ptr<ListaEnlazada>& lista, int posicion) {
     }
 }
 
-void print_list(const unique_ptr<ListaEnlazada>& lista) {
-    const node* temp = lista->cabeza.get();
+void print_list(const shared_ptr<ListaEnlazada>& lista) {
+    shared_ptr<node> temp = lista->cabeza;
     while (temp) {
         cout << temp->valor << " -> ";
-        temp = temp->siguiente.get();
+        temp = temp->siguiente;
     }
     cout << "NULL" << endl;
     cout << "Tamaño: " << lista->size << endl;
@@ -85,7 +85,7 @@ void print_list(const unique_ptr<ListaEnlazada>& lista) {
 
 
 int main() {
-    auto lista = make_unique<ListaEnlazada>();
+    shared_ptr lista = make_shared<ListaEnlazada>();
     
     push_front(lista, 10);
     push_front(lista, 20);

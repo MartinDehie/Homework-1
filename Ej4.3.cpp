@@ -11,13 +11,13 @@ constexpr bool sonIguales(const char* a, const char* b) {
 
 int main() {
     const char *texto1 = "alksdnlaksdnaksjnasldknaosdbakjsdbalkdnalsdalksdnalkdnalksdnalskd";
-    const char *texto2 = "asdasasdfnkjjwdflwenlkfqowpecnqwpjocnqwjcnwkdcnlkNDCLKASLd";
+    const char *texto2 = "alksdnlaksdnaksjnasldknaosdbakjsdbalkdnalsdalksdnalkdnalksdnalskd";
 
     auto startTime = chrono::high_resolution_clock::now();
     sonIguales(texto1,texto2);
     auto endTime = chrono::high_resolution_clock::now();
     auto elapsedTime = chrono::duration_cast<chrono::nanoseconds>(
     endTime - startTime);
-    cout << "A sonIguales le tomó: " << elapsedTime.count() << "nanosegundos" << endl;
+    cout << "A la funcion le tomó: " << elapsedTime.count() << "nanosegundos en ejecutar" << endl;
     return 0;
 }
